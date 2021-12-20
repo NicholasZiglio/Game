@@ -11,13 +11,25 @@ namespace Game
     {
         //Properties
         #region Properties
+
+        //Health
+        public int Health { get; set; }
+        public bool IsAlive { get; set; }
+
         //Location
         public double Height { get; set; }
         public Point3d Location { get; set; }
+        public Point3d CameraLocation { get; set; }
 
         //Movement
-        public double ActiveSpeed { get; set; }
+        public enum SpeedTypes
+        {
+            CrouchingSpeed,
+            ActiveSpeed,
+            DefaultSpeed
+        }
         public double CrouchingSpeed { get; set; }
+        public double ActiveSpeed { get; set; }
         public double DefaultSpeed { get; set; }
         public double RunningSpeed { get; set; }
         public Vector3d MovementForward { get; set; }
@@ -37,9 +49,14 @@ namespace Game
         //Constructor
         public Player(double height)
         {
+            //Health
+            Health = 100;
+            IsAlive = true;
+
             //Location
             Height = height;
-            Location = new Point3d(0.0, 0.0, height);
+            Location = new Point3d(0.0, 0.0, 0.0);
+            CameraLocation = new Point3d(0.0, 0.0, Height);
 
             //Movement
             CrouchingSpeed = 5;
@@ -57,6 +74,15 @@ namespace Game
             LookDirection = new Vector3d(0.0, 1.0, 0.0);
             LookSpeed = Math.PI;
             LookStopAngleZ = Math.PI / 180.0;
+        }
+        
+        public void TakeDamage(int damage)
+        {
+            Health -= damage;
+            if (Health <= 0)
+            {
+                IsAlive = false;
+            }
         }
 
         public void Update(GameController gameController, double deltaTime, Vector3d gravity)
@@ -76,7 +102,8 @@ namespace Game
             HandleJump(gameController, deltaTime, gravity);
 
             //Move Player Camera
-            Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraLocation(Location, true);
+            CameraLocation = new Point3d(Location.X, Location.Y, Height);
+            Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraLocation(CameraLocation, true);
         }
 
         //Movement Direction Change
@@ -134,10 +161,10 @@ namespace Game
                 Forces += gravity * deltaTime;
 
                 //End Jump
-                if (Location.Z < Height)
+                if (Location.Z < 0)
                 {
                     IsAirbourne = false;
-                    Location = new Point3d(Location.X, Location.Y, Height);
+                    Location = new Point3d(Location.X, Location.Y, 0);
                 }
             }
         }

@@ -11,8 +11,9 @@ namespace Game
     {
         #region Persistent Variables
 
+
         GameController gameController = new GameController(UserIndex.One, 10000.0, 10000.0);
-        
+        Player player;
 
         //Grasshopper
         GH_Document GrasshopperDocument;
@@ -29,18 +30,7 @@ namespace Game
         double deltaTime;
         Vector3d gravity = new Vector3d(0.0, 0.0, -9.81);
 
-        //Player
-        Vector3d cameraDirection = new Vector3d(0.0, 1.0, 0.0);
-        double playerHeight = 2.0;
-        Point3d playerPoint;
-        double playerMovementSpeed = 20.0;
-        double playerLookSpeed = Math.PI;
-        double cameraStopAngleZ = Math.PI / 180.0;
-        bool isPlayerJumping = false;
-        Vector3d playerJumpAcceleration = new Vector3d(0.0, 0.0, 3.5);
-        Vector3d playerForces = new Vector3d(0.0, 0.0, 0.0);
-        Vector3d playerForwardMovementVector = Vector3d.Unset;
-        Vector3d playerSideMovementVector = Vector3d.Unset;
+        
 
 
         #endregion Persistent Variables
@@ -116,7 +106,7 @@ namespace Game
         //Start
         public void Start()
         {
-            playerPoint = new Point3d(0.0, 0.0, playerHeight);
+            player = new Player(2.0);
         }
 
         //Update
@@ -130,8 +120,7 @@ namespace Game
             GetDeltaTime();
 
             //Player Control
-            PlaterLookDirection();
-            PlayerMovement();
+            player.Update(gameController, deltaTime, gravity);
         }
 
         //Get delta time
@@ -143,84 +132,7 @@ namespace Game
         }
 
 
-        
-
-        //Player look direction
-        private void PlaterLookDirection()
-        {
-            cameraDirection.Rotate(-gameController.RightStickX * playerLookSpeed * deltaTime, Vector3d.ZAxis);
-
-            double cameraAngleZ = Vector3d.VectorAngle(new Vector3d(0.0, 0.0, -1.0), cameraDirection);
-            double lookRotationAngle = gameController.RightStickY * playerLookSpeed * deltaTime;
-
-            if ((cameraAngleZ + lookRotationAngle + cameraStopAngleZ < Math.PI && lookRotationAngle > 0) || (cameraAngleZ + lookRotationAngle - cameraStopAngleZ > 0 && lookRotationAngle < 0))
-            {
-                Vector3d cameraSideDirection = new Vector3d(cameraDirection.X, cameraDirection.Y, 0.0);
-                cameraSideDirection.Rotate(-Math.PI / 2.0, Vector3d.ZAxis);
-                cameraDirection.Rotate(lookRotationAngle, cameraSideDirection);
-            }
-            Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraDirection(cameraDirection, true);
-        }
-
-        //Player movement
-        private void PlayerMovement()
-        {
-            //Allow direction change if on ground
-            if (!isPlayerJumping)
-            {
-                //Forward vector
-                playerForwardMovementVector = new Vector3d(cameraDirection.X, cameraDirection.Y, 0.0);
-
-                //Side vector unitized
-                playerSideMovementVector = new Vector3d(playerForwardMovementVector);
-                playerSideMovementVector.Rotate(-Math.PI / 2.0, Vector3d.ZAxis);
-
-                //Scaled Forward Vector
-                playerForwardMovementVector.Unitize();
-                playerForwardMovementVector *= gameController.LeftStickY * deltaTime * playerMovementSpeed;
-
-                //Scaled side vector
-                playerSideMovementVector.Unitize();
-                playerSideMovementVector *= gameController.LeftStickX * deltaTime * playerMovementSpeed;
-            }
-
-            //Move forward
-            if (playerForwardMovementVector != Vector3d.Unset)
-            {
-                playerPoint.Transform(Transform.Translation(playerForwardMovementVector));
-            }
-            
-            //Move sideways
-            if (playerSideMovementVector != Vector3d.Unset)
-            {
-                playerPoint.Transform(Transform.Translation(playerSideMovementVector));
-            }
-           
-            //Activate Jump
-            if (gameController.ButtonA.JustPressed && !isPlayerJumping)
-            {
-                isPlayerJumping = true;
-                playerForces = playerJumpAcceleration;
-            }
-
-            //Apply Gravity
-            if (isPlayerJumping)
-            {
-                playerPoint += playerForces * deltaTime;
-                playerForces += gravity * deltaTime;
-
-                //End Jump
-                if (playerPoint.Z < playerHeight)
-                {
-                    isPlayerJumping = false;
-                    playerPoint.Z = playerHeight;
-                }
-            }
-
-            //Move Player Camera
-            Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraLocation(playerPoint, true);
-        }
-
+        //Component Extras
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.
         /// Icons need to be 24x24 pixels.
