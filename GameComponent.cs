@@ -9,6 +9,7 @@ namespace Game
 {
     public class GameComponent : GH_Component
     {
+        //ADD PLAYERS
         #region Persistent Variables
 
         GameController gameController = new GameController(UserIndex.One, 10000.0, 10000.0);
