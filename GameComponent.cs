@@ -18,7 +18,7 @@ namespace Game
         //Grasshopper
         GH_Document GrasshopperDocument;
         GH_Component GrasshopperComponent;
-        int scheduleSolutionMilliseconds = 10;
+        readonly int scheduleSolutionMilliseconds = 10;
 
         //Rhino
 
@@ -72,7 +72,7 @@ namespace Game
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             InitializeComponent();
-            DA.SetData(0, player._MovementForward);
+            //DA.SetData(0, );
         }
 
         //Initialize Grasshopper component & Rhino document
