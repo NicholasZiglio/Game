@@ -12,8 +12,8 @@ namespace Game
         #region Persistent Variables
 
 
-        GameController gameController = new GameController(UserIndex.One, 10000.0, 10000.0);
-        Player player = new Player(2.0);
+        readonly GameController gameController = new GameController(UserIndex.One, 10000.0, 10000.0);
+        readonly Player player = new Player(2.0);
 
         //Grasshopper
         GH_Document GrasshopperDocument;

@@ -17,12 +17,18 @@ namespace Game
         public bool IsAlive { get; set; }
 
         //Location
-        private double Height { get; set; }
+        private double _Height;
+        private double FullHeight { get; set; }
+        private double CrouchingHeight { get; set; }
+
+
         public Point3d Location { get; set; }
         private Point3d _Location;
         private Point3d _CameraLocation;
 
         //Movement
+        private bool IsAirbourne { get; set; }
+        private bool IsCrouching { get; set; }
         private enum SpeedTypes
         {
             CrouchingSpeed,
@@ -37,7 +43,6 @@ namespace Game
         private Vector3d _MovementSide;
 
         //Forces
-        private bool IsAirbourne { get; set; }
         private Vector3d _JumpAcceleration;
         private Vector3d _Forces;
 
@@ -56,9 +61,11 @@ namespace Game
             IsAlive = true;
 
             //Location
-            Height = height;
+            FullHeight = height;
+            CrouchingHeight = height / 2.0;
+            _Height = height;
             _Location = new Point3d(0.0, 0.0, 0.0);
-            _CameraLocation = new Point3d(0.0, 0.0, Height);
+            _CameraLocation = new Point3d(0.0, 0.0, _Height);
 
             //Movement
             CrouchingSpeed = 5;
@@ -100,16 +107,70 @@ namespace Game
         //Update movement
         private void UpdateMovement(GameController gameController, double deltaTime, Vector3d gravity)
         {
+            HandleJump(gameController, deltaTime, gravity);
+            HandlePosture(gameController);
             GetMovementDirection(gameController, deltaTime);
 
             SetLocationXY();
-            HandleJump(gameController, deltaTime, gravity);
+            
 
             Location = new Point3d(_Location);
 
             //Move Player Camera
-            _CameraLocation = new Point3d(_Location.X, _Location.Y, _Location.Z + Height);
+            _CameraLocation = new Point3d(_Location.X, _Location.Y, _Location.Z + _Height);
             Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraLocation(_CameraLocation, true);
+        }
+
+        //HandleJump
+        private void HandleJump(GameController gameController, double deltaTime, Vector3d gravity)
+        {
+            //Activate Jump
+            if (gameController.ButtonA.JustPressed && !IsAirbourne)
+            {
+                IsAirbourne = true;
+                _Forces = _JumpAcceleration;
+            }
+
+            //Apply Gravity
+            if (IsAirbourne)
+            {
+                _Location += _Forces * deltaTime;
+                _Forces += gravity * deltaTime;
+
+                //End Jump
+                if (_Location.Z < 0)
+                {
+                    IsAirbourne = false;
+                    _Location = new Point3d(_Location.X, _Location.Y, 0);
+                }
+            }
+        }
+
+        //Get Speed Changes
+        private void HandlePosture(GameController gameController)
+        {
+            if (!IsAirbourne)
+            {
+                if (gameController.LeftThumb.IsPressed)
+                {
+                    ActiveSpeed = RunningSpeed;
+                }
+                else if (gameController.ButtonB.IsPressed)
+                {
+                    ActiveSpeed = CrouchingSpeed;
+                    IsCrouching = true;
+                    _Height = CrouchingHeight;
+                }
+                else
+                {
+                    ActiveSpeed = DefaultSpeed;
+                }
+                if(!gameController.ButtonB.IsPressed)
+                {
+                    IsCrouching = false;
+                    _Height = FullHeight;
+                }
+            }
         }
 
         //Movement Direction Change
@@ -143,30 +204,6 @@ namespace Game
             
         }
 
-        //HandleJump
-        private void HandleJump(GameController gameController, double deltaTime, Vector3d gravity)
-        {
-            //Activate Jump
-            if (gameController.ButtonA.JustPressed && !IsAirbourne)
-            {
-                IsAirbourne = true;
-                _Forces = _JumpAcceleration;
-            }
-
-            //Apply Gravity
-            if (IsAirbourne)
-            {
-                _Location += _Forces * deltaTime;
-                _Forces += gravity * deltaTime;
-
-                //End Jump
-                if (_Location.Z < 0)
-                {
-                    IsAirbourne = false;
-                    _Location = new Point3d(_Location.X, _Location.Y, 0);
-                }
-            }
-        }
         #endregion Movement
 
         //Player look direction
