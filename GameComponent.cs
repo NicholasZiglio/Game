@@ -13,7 +13,7 @@ namespace Game
 
 
         GameController gameController = new GameController(UserIndex.One, 10000.0, 10000.0);
-        Player player;
+        Player player = new Player(2.0);
 
         //Grasshopper
         GH_Document GrasshopperDocument;
@@ -61,6 +61,7 @@ namespace Game
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddPointParameter("a", "a", "a", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -71,6 +72,7 @@ namespace Game
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             InitializeComponent();
+            DA.SetData(0, player._MovementForward);
         }
 
         //Initialize Grasshopper component & Rhino document
@@ -106,7 +108,6 @@ namespace Game
         //Start
         public void Start()
         {
-            player = new Player(2.0);
         }
 
         //Update
@@ -114,12 +115,10 @@ namespace Game
         {
             //Expire solution
             GrasshopperComponent.ExpireSolution(false);
-            
-            //Updates
-            gameController.UpdateState();
-            GetDeltaTime();
 
-            //Player Control
+            //Updates
+            GetDeltaTime();
+            gameController.UpdateState();
             player.Update(gameController, deltaTime, gravity);
         }
 

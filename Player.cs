@@ -17,31 +17,33 @@ namespace Game
         public bool IsAlive { get; set; }
 
         //Location
-        public double Height { get; set; }
+        private double Height { get; set; }
         public Point3d Location { get; set; }
-        public Point3d CameraLocation { get; set; }
+        private Point3d _Location;
+        private Point3d _CameraLocation;
 
         //Movement
-        public enum SpeedTypes
+        private enum SpeedTypes
         {
             CrouchingSpeed,
             ActiveSpeed,
             DefaultSpeed
         }
-        public double CrouchingSpeed { get; set; }
-        public double ActiveSpeed { get; set; }
-        public double DefaultSpeed { get; set; }
-        public double RunningSpeed { get; set; }
-        public Vector3d MovementForward { get; set; }
-        public Vector3d MovementSide { get; set; }
+        private double ActiveSpeed;
+        private double CrouchingSpeed { get; set; }
+        private double DefaultSpeed { get; set; }
+        private double RunningSpeed { get; set; }
+        private Vector3d _MovementForward;
+        private Vector3d _MovementSide;
 
         //Forces
-        public bool IsAirbourne { get; set; }
-        public Vector3d JumpAcceleration { get; set; }
-        public Vector3d Forces { get; set; }
+        private bool IsAirbourne { get; set; }
+        private Vector3d _JumpAcceleration;
+        private Vector3d _Forces;
 
         //Orientation
         public Vector3d LookDirection { get; set; }
+        private Vector3d _LookDirection;
         public double LookSpeed { get; set; }
         public double LookStopAngleZ { get; set; }
         #endregion Properties
@@ -55,23 +57,24 @@ namespace Game
 
             //Location
             Height = height;
-            Location = new Point3d(0.0, 0.0, 0.0);
-            CameraLocation = new Point3d(0.0, 0.0, Height);
+            _Location = new Point3d(0.0, 0.0, 0.0);
+            _CameraLocation = new Point3d(0.0, 0.0, Height);
 
             //Movement
             CrouchingSpeed = 5;
             DefaultSpeed = 10;
             RunningSpeed = 20;
-            MovementForward = new Vector3d(0.0, 0.0, 0.0);
-            MovementSide = new Vector3d(0.0, 0.0, 0.0);
+            ActiveSpeed = DefaultSpeed;
+            _MovementForward = new Vector3d(0.0, 0.0, 0.0);
+            _MovementSide = new Vector3d(0.0, 0.0, 0.0);
 
             //Forces
             IsAirbourne = false;
-            JumpAcceleration = new Vector3d(0.0, 0.0, 3.5);
-            Forces = new Vector3d(0.0, 0.0, 0.0);
+            _JumpAcceleration = new Vector3d(0.0, 0.0, 3.5);
+            _Forces = new Vector3d(0.0, 0.0, 0.0);
            
             //Orientation
-            LookDirection = new Vector3d(0.0, 1.0, 0.0);
+            _LookDirection = new Vector3d(0.0, 1.0, 0.0);
             LookSpeed = Math.PI;
             LookStopAngleZ = Math.PI / 180.0;
         }
@@ -91,6 +94,7 @@ namespace Game
             PlaterLookDirection(gameController, deltaTime);
         }
 
+
         //Movement
         #region Movement
         //Update movement
@@ -101,9 +105,11 @@ namespace Game
             SetLocationXY();
             HandleJump(gameController, deltaTime, gravity);
 
+            Location = new Point3d(_Location);
+
             //Move Player Camera
-            CameraLocation = new Point3d(Location.X, Location.Y, Height);
-            Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraLocation(CameraLocation, true);
+            _CameraLocation = new Point3d(_Location.X, _Location.Y, _Location.Z + Height);
+            Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraLocation(_CameraLocation, true);
         }
 
         //Movement Direction Change
@@ -112,19 +118,19 @@ namespace Game
             if (!IsAirbourne)
             { 
                 //Forward vector
-                MovementForward = new Vector3d(LookDirection.X, LookDirection.Y, 0.0);
+                _MovementForward = new Vector3d(_LookDirection.X, _LookDirection.Y, 0.0);
 
                 //Side vector unitized
-                MovementSide = new Vector3d(MovementForward);
-                MovementSide.Rotate(-Math.PI / 2.0, Vector3d.ZAxis);
+                _MovementSide = new Vector3d(_MovementForward);
+                _MovementSide.Rotate(-Math.PI / 2.0, Vector3d.ZAxis);
 
                 //Scaled Forward Vector
-                MovementForward.Unitize();
-                MovementForward *= gameController.LeftStickY * deltaTime * ActiveSpeed;
+                _MovementForward.Unitize();
+                _MovementForward *= gameController.LeftStickY * deltaTime * ActiveSpeed;
 
                 //Scaled side vector
-                MovementSide.Unitize();
-                MovementSide *= gameController.LeftStickX * deltaTime * ActiveSpeed;
+                _MovementSide.Unitize();
+                _MovementSide *= gameController.LeftStickX * deltaTime * ActiveSpeed;
             }
         }
 
@@ -132,16 +138,9 @@ namespace Game
         private void SetLocationXY()
         {
             //Move forward
-            if (MovementForward.Length > 0)
-            {
-                Location.Transform(Transform.Translation(MovementForward));
-            }
-
-            //Move sideways
-            if (MovementSide.Length > 0)
-            {
-                Location.Transform(Transform.Translation(MovementSide));
-            }
+            _Location += _MovementForward;
+            _Location += _MovementSide;
+            
         }
 
         //HandleJump
@@ -151,20 +150,20 @@ namespace Game
             if (gameController.ButtonA.JustPressed && !IsAirbourne)
             {
                 IsAirbourne = true;
-                Forces = JumpAcceleration;
+                _Forces = _JumpAcceleration;
             }
 
             //Apply Gravity
             if (IsAirbourne)
             {
-                Location += Forces * deltaTime;
-                Forces += gravity * deltaTime;
+                _Location += _Forces * deltaTime;
+                _Forces += gravity * deltaTime;
 
                 //End Jump
-                if (Location.Z < 0)
+                if (_Location.Z < 0)
                 {
                     IsAirbourne = false;
-                    Location = new Point3d(Location.X, Location.Y, 0);
+                    _Location = new Point3d(_Location.X, _Location.Y, 0);
                 }
             }
         }
@@ -173,18 +172,20 @@ namespace Game
         //Player look direction
         private void PlaterLookDirection(GameController gameController, double deltaTime)
         {
-            LookDirection.Rotate(-gameController.RightStickX * LookSpeed * deltaTime, Vector3d.ZAxis);
+            _LookDirection.Rotate(-gameController.RightStickX * LookSpeed * deltaTime, Vector3d.ZAxis);
 
-            double cameraAngleZ = Vector3d.VectorAngle(new Vector3d(0.0, 0.0, -1.0), LookDirection);
+            double cameraAngleZ = Vector3d.VectorAngle(new Vector3d(0.0, 0.0, -1.0), _LookDirection);
             double lookRotationAngle = gameController.RightStickY * LookSpeed * deltaTime;
 
             if ((cameraAngleZ + lookRotationAngle + LookStopAngleZ < Math.PI && lookRotationAngle > 0) || (cameraAngleZ + lookRotationAngle - LookStopAngleZ > 0 && lookRotationAngle < 0))
             {
-                Vector3d lookSideDirection = new Vector3d(LookDirection.X, LookDirection.Y, 0.0);
+                Vector3d lookSideDirection = new Vector3d(_LookDirection.X, _LookDirection.Y, 0.0);
                 lookSideDirection.Rotate(-Math.PI / 2.0, Vector3d.ZAxis);
-                LookDirection.Rotate(lookRotationAngle, lookSideDirection);
+                _LookDirection.Rotate(lookRotationAngle, lookSideDirection);
             }
-            Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraDirection(LookDirection, true);
+
+            LookDirection = new Vector3d(_LookDirection);
+            Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraDirection(_LookDirection, true);
         }
 
 
