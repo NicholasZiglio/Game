@@ -17,7 +17,7 @@ namespace Game
         public bool IsAlive { get; set; }
 
         //Location
-        private double _Height;
+        public double Height;
         private double FullHeight { get; set; }
         private double CrouchingHeight { get; set; }
 
@@ -51,7 +51,14 @@ namespace Game
         private Vector3d _LookDirection;
         public double LookSpeed { get; set; }
         public double LookStopAngleZ { get; set; }
+
+        //Ammo
+        private List<Snowball> Snowballs;
+        private List<int> _SnowSnoballIndicesToCull;
+        public List<Mesh> SnowballRenders;
         #endregion Properties
+
+
 
         //Constructor
         public Player(double height)
@@ -63,9 +70,9 @@ namespace Game
             //Location
             FullHeight = height;
             CrouchingHeight = height / 2.0;
-            _Height = height;
+            Height = height;
             _Location = new Point3d(0.0, 0.0, 0.0);
-            _CameraLocation = new Point3d(0.0, 0.0, _Height);
+            _CameraLocation = new Point3d(0.0, 0.0, Height);
 
             //Movement
             CrouchingSpeed = 5;
@@ -84,6 +91,9 @@ namespace Game
             _LookDirection = new Vector3d(0.0, 1.0, 0.0);
             LookSpeed = Math.PI;
             LookStopAngleZ = Math.PI / 180.0;
+
+            //Ammo
+            Snowballs = new List<Snowball>();
         }
         
         public void TakeDamage(int damage)
@@ -98,7 +108,42 @@ namespace Game
         public void Update(GameController gameController, double deltaTime, Vector3d gravity)
         {
             UpdateMovement(gameController, deltaTime, gravity);
-            PlaterLookDirection(gameController, deltaTime);
+            UpdateDirection(gameController, deltaTime);
+            HandleSnowballs(gameController, deltaTime, gravity);
+
+        }
+
+        private void HandleSnowballs(GameController gameController, double deltaTime, Vector3d gravity)
+        {
+            if (gameController.LeftShoulder.JustPressed)
+            {
+                Snowballs.Add(new Snowball(GetNewSnowballPosition(true), _LookDirection * 30.0));
+            }
+            if (gameController.RightShoulder.JustPressed)
+            {
+                Snowballs.Add(new Snowball(GetNewSnowballPosition(false), _LookDirection * 30.0));
+            }
+
+            _SnowSnoballIndicesToCull = new List<int>();
+            SnowballRenders = new List<Mesh>();
+            for (int i = 0; i < Snowballs.Count; i++)
+            {
+                if (Snowballs[i].IsAlive)
+                {
+                    Snowballs[i].Update(gravity, deltaTime);
+                    SnowballRenders.Add(Mesh.CreateFromSphere(Snowballs[i].Render, 10, 10));
+                }
+                else
+                {
+                    _SnowSnoballIndicesToCull.Add(i);
+                }
+            }
+
+
+            foreach (int i in _SnowSnoballIndicesToCull)
+            {
+                Snowballs.RemoveAt(i);
+            }
         }
 
 
@@ -117,8 +162,7 @@ namespace Game
             Location = new Point3d(_Location);
 
             //Move Player Camera
-            _CameraLocation = new Point3d(_Location.X, _Location.Y, _Location.Z + _Height);
-            Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraLocation(_CameraLocation, true);
+            Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraLocation(GetCameraPoint(), true);
         }
 
         //HandleJump
@@ -159,7 +203,7 @@ namespace Game
                 {
                     ActiveSpeed = CrouchingSpeed;
                     IsCrouching = true;
-                    _Height = CrouchingHeight;
+                    Height = CrouchingHeight;
                 }
                 else
                 {
@@ -168,7 +212,7 @@ namespace Game
                 if(!gameController.ButtonB.IsPressed)
                 {
                     IsCrouching = false;
-                    _Height = FullHeight;
+                    Height = FullHeight;
                 }
             }
         }
@@ -207,7 +251,7 @@ namespace Game
         #endregion Movement
 
         //Player look direction
-        private void PlaterLookDirection(GameController gameController, double deltaTime)
+        private void UpdateDirection(GameController gameController, double deltaTime)
         {
             _LookDirection.Rotate(-gameController.RightStickX * LookSpeed * deltaTime, Vector3d.ZAxis);
 
@@ -225,6 +269,28 @@ namespace Game
             Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.SetCameraDirection(_LookDirection, true);
         }
 
+        //Get Camera Point
+        private Point3d GetCameraPoint()
+        {
+            return new Point3d(_Location.X, _Location.Y, _Location.Z + Height);
+        }
+
+        private Point3d GetNewSnowballPosition(bool isLeft)
+        {
+            double rotation = -Math.PI / 2.5;
+            if (isLeft)
+            {
+                rotation *= -1;
+            }
+            Vector3d offset = new Vector3d(_LookDirection);
+            offset.Unitize();
+            offset.Rotate(rotation, Vector3d.ZAxis);
+            offset *= 1.25;
+            Point3d location = new Point3d(GetCameraPoint());
+            location += offset;
+
+            return location;
+        }
 
     }
 }
