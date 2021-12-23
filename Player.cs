@@ -12,6 +12,8 @@ namespace Game
         //Properties
         #region Properties
 
+        public static Player playerStatic;
+
         //Health
         public int Health { get; set; }
         public bool IsAlive { get; set; }
@@ -51,11 +53,7 @@ namespace Game
         private Vector3d _LookDirection;
         public double LookSpeed { get; set; }
         public double LookStopAngleZ { get; set; }
-
-        //Ammo
-        private List<Snowball> Snowballs;
-        private List<int> _SnowSnoballIndicesToCull;
-        public List<Mesh> SnowballRenders;
+        
         #endregion Properties
 
 
@@ -91,9 +89,7 @@ namespace Game
             _LookDirection = new Vector3d(0.0, 1.0, 0.0);
             LookSpeed = Math.PI;
             LookStopAngleZ = Math.PI / 180.0;
-
-            //Ammo
-            Snowballs = new List<Snowball>();
+            playerStatic = this;
         }
         
         public void TakeDamage(int damage)
@@ -109,40 +105,19 @@ namespace Game
         {
             UpdateMovement(gameController, deltaTime, gravity);
             UpdateDirection(gameController, deltaTime);
-            HandleSnowballs(gameController, deltaTime, gravity);
+            ThrowSnowballs(gameController, deltaTime, gravity);
 
         }
 
-        private void HandleSnowballs(GameController gameController, double deltaTime, Vector3d gravity)
+        private void ThrowSnowballs(GameController gameController, double deltaTime, Vector3d gravity)
         {
             if (gameController.LeftShoulder.JustPressed)
             {
-                Snowballs.Add(new Snowball(GetNewSnowballPosition(true), _LookDirection * 30.0));
+                Snowball.Snowballs.Add(new Snowball(GetNewSnowballPosition(true), _LookDirection * 30.0));
             }
             if (gameController.RightShoulder.JustPressed)
             {
-                Snowballs.Add(new Snowball(GetNewSnowballPosition(false), _LookDirection * 30.0));
-            }
-
-            _SnowSnoballIndicesToCull = new List<int>();
-            SnowballRenders = new List<Mesh>();
-            for (int i = 0; i < Snowballs.Count; i++)
-            {
-                if (Snowballs[i].IsAlive)
-                {
-                    Snowballs[i].Update(gravity, deltaTime);
-                    SnowballRenders.Add(Mesh.CreateFromSphere(Snowballs[i].Render, 10, 10));
-                }
-                else
-                {
-                    _SnowSnoballIndicesToCull.Add(i);
-                }
-            }
-
-
-            foreach (int i in _SnowSnoballIndicesToCull)
-            {
-                Snowballs.RemoveAt(i);
+                Snowball.Snowballs.Add(new Snowball(GetNewSnowballPosition(false), _LookDirection * 30.0));
             }
         }
 
