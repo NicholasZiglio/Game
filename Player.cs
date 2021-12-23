@@ -100,8 +100,10 @@ namespace Game
         public void Update(GameController gameController, double deltaTime, Vector3d gravity)
         {
             UpdateMovement(gameController, deltaTime, gravity);
+            CheckCollisions();
             UpdateDirection(gameController, deltaTime);
             ThrowSnowballs(gameController, deltaTime, gravity);
+            
 
         }
 
@@ -261,6 +263,18 @@ namespace Game
             location += offset;
 
             return location;
+        }
+
+        //Check Collisions
+        private void CheckCollisions()
+        {
+            foreach (Snowman snowman in Snowman.Snowmen)
+            {
+                if (new Point3d(_Location.X, _Location.Y, 0.0).DistanceTo(snowman.Location) < 1.0)
+                {
+                    IsAlive = false;
+                }
+            }
         }
 
     }

@@ -287,6 +287,15 @@ namespace Game.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAOYCAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIArgIAAAAAAAA4BAAAAAEAAADSHTOevfjl/9IdM569+OX/0h0znr345f/SHTOevfjl/9IdM569+OX/0h0znr345f/SHTOevfjl/9IdM569+OX/AAAAAAAAAAAAAAAAAAAAAAFAnMUBQJzFAAAAAAFAnEUBQJxFAAAAAAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AAAAAAABAAAAAAIDATAAAACId5xyAABAnMUAQJzFAAAAAABAnMUAQJxFAAAAAABAnEUAQJzFAAAAAABAnEUAQJxFAAAAADAAAAB4tqBnAAAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string GroundMeshJson {
+            get {
+                return ResourceManager.GetString("GroundMeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAJIOAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAWg4AAAAAAAA4iAAAAG4AAADSHTOevfjl/9IdM569+OX/0h0znr345f/SHTOevfjl/zEIrBxaZPO/GC1EVPshGUCk7DRrY+riv2ZmZmZmZuY/AAAAAAAAAAAAAAAAAAAAAJuZGb8cUxe/nmoyQJuZGT8cUxc/oGpiQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAmpmZmZmZyT8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string HatMeshJson {

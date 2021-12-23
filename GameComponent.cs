@@ -13,7 +13,7 @@ namespace Game
         #region Persistent Variables
 
         readonly GameController gameController = new GameController(UserIndex.One, 10000.0, 10000.0);
-        readonly Player player = new Player(2.0);
+        Player player = new Player(2.0);
 
         //Grasshopper
         GH_Document GrasshopperDocument;
@@ -29,6 +29,8 @@ namespace Game
         DateTime endTime = DateTime.Now;
         double deltaTime;
         Vector3d gravity = new Vector3d(0.0, 0.0, -9.81);
+
+        Mesh groundMesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.GroundMeshJson);
 
         #endregion Persistent Variables
 
@@ -63,7 +65,7 @@ namespace Game
             pManager.AddMeshParameter("SnowmenNoses", "SnowmenNoses", "SnowmenNoses", GH_ParamAccess.list);
             pManager.AddMeshParameter("SnowmenArms", "SnowmenArms", "SnowmenArms", GH_ParamAccess.list);
             pManager.AddMeshParameter("SnowmenHatButtons", "SnowmenHatButtons", "SnowmenHatButtons", GH_ParamAccess.list);
-
+            pManager.AddMeshParameter("Ground", "Ground", "Ground", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -80,8 +82,8 @@ namespace Game
             DA.SetDataList(1, Snowman.SnowmenBodyMeshes);
             DA.SetDataList(2, Snowman.SnowmenNoseMeshes);
             DA.SetDataList(3, Snowman.SnowmenArmsMeshes);
-            DA.SetDataList(3, Snowman.SnowmenBlackMeshes);
-
+            DA.SetDataList(4, Snowman.SnowmenBlackMeshes);
+            DA.SetData(5, groundMesh);
         }
 
         //Initialize Grasshopper component & Rhino document
@@ -118,9 +120,14 @@ namespace Game
         //Start
         public void Start()
         {
+            player = new Player(2.0);
+            Snowball.Snowballs.Clear();
+            Snowman.Snowmen.Clear();
             Snowman.Snowmen.Add(new Snowman(player.Location));
             Snowman.Snowmen.Add(new Snowman(player.Location));
             Snowman.Snowmen.Add(new Snowman(player.Location));
+            Snowman.StartHealth = 300;
+            Snowman.StartSpeed = 5;
         }
 
         //Update
@@ -133,8 +140,18 @@ namespace Game
             GetDeltaTime();
             gameController.UpdateState();
             player.Update(gameController, deltaTime, gravity);
-            Snowball.Update(deltaTime, gravity);
-            Snowman.Update(player, deltaTime);
+            if (!player.IsAlive)
+            {
+                Start();
+            }
+            else
+            {
+                Snowball.Update(deltaTime, gravity);
+                Snowman.Update(player, deltaTime);
+            }
+            
+
+            
         }
 
         //Get delta time
@@ -172,6 +189,7 @@ namespace Game
             RenderMeshList(args, Snowman.SnowmenNoseMeshes, orangeMaterial);
             RenderMeshList(args, Snowman.SnowmenArmsMeshes, brownMaterial);
             RenderMeshList(args, Snowman.SnowmenBlackMeshes, blackMaterial);
+            args.Display.DrawMeshShaded(groundMesh, whiteMaterial);
         }
 
         //Render List of Meshes

@@ -147,7 +147,7 @@ namespace Game
             {
                 foreach (Snowball snowball in Snowball.Snowballs)
                 {
-                    snowman.CheckSnowmanCollisions(snowball.Location, snowball.damage);
+                    snowman.CheckSnowmanCollisions(snowball, snowball.damage);
 
                 }
 
@@ -155,13 +155,13 @@ namespace Game
         }
 
         //Check Snowman Collisions
-        private void CheckSnowmanCollisions(Point3d snowballPoint, int snowballdamage)
+        private void CheckSnowmanCollisions(Snowball snowball, int snowballdamage)
         {
             UpdateCollisionPoints();
 
-            CheckPointPointCollision(snowballPoint, bodyCollisionPoint, _BodyCollisionOffset.Z, snowballdamage);
+            CheckPointPointCollision(snowball, bodyCollisionPoint, _BodyCollisionOffset.Z, snowballdamage);
             int headshotDamage = snowballdamage * HeadshotMultiplier;
-            CheckPointPointCollision(snowballPoint, headCollisionPoint, _HeadCollisionOffset.Z, headshotDamage);
+            CheckPointPointCollision(snowball, headCollisionPoint, _HeadCollisionOffset.Z, headshotDamage);
 
             if (health < 0)
             {
@@ -181,11 +181,12 @@ namespace Game
         }
 
         //Check Point to Point Collision
-        private void CheckPointPointCollision (Point3d snowballPoint, Point3d snowmanPoint, double radius, int snowballdamage)
+        private void CheckPointPointCollision (Snowball snowball, Point3d snowmanPoint, double radius, int snowballdamage)
         {
-            if (snowballPoint.DistanceTo(snowmanPoint) <= radius)
+            if (snowball.Location.DistanceTo(snowmanPoint) <= radius)
             {
                 health -= snowballdamage;
+                snowball.IsAlive = false;
             }
         }
        
