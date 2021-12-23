@@ -12,8 +12,69 @@ namespace Game
         #region Properties
 
         //Mesh
+        //Body
         public static List<Mesh> SnowmenBodyMeshes = new List<Mesh>();
-        private static Mesh SnowmanBodyMesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.SnowmanBodyMeshJson);
+        private static readonly Mesh SnowmanBodyMesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.SnowmanBodyMeshJson);
+        //Nose
+        public static List<Mesh> SnowmenNoseMeshes = new List<Mesh>();
+        private static readonly Mesh SnowmanNoseMesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.NoseMeshJson);
+        //Arms
+        public static List<Mesh> SnowmenArmsMeshes = new List<Mesh>();
+        private static readonly Mesh SnowmanArm1Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Arm1MeshJson);
+        private static readonly Mesh SnowmanArm2Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Arm2MeshJson);
+        //Black Meshes
+        public static List<Mesh> SnowmenBlackMeshes = new List<Mesh>();
+        #region BlackMeshes
+        private static readonly Mesh Button1Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button1MeshJson);
+        private static readonly Mesh Button2Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button2MeshJson);
+        private static readonly Mesh Button3Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button3MeshJson);
+        private static readonly Mesh Button4Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button4MeshJson);
+        private static readonly Mesh Button5Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button5MeshJson);
+        private static readonly Mesh Button6Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button6MeshJson);
+        private static readonly Mesh Button7Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button7MeshJson);
+        private static readonly Mesh Button8Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button8MeshJson);
+        private static readonly Mesh Button9Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button9MeshJson);
+        private static readonly Mesh Button10Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button10MeshJson);
+        private static readonly Mesh Button11Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button11MeshJson);
+        private static readonly Mesh Button12Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button12MeshJson);
+        private static readonly Mesh Button13Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button13MeshJson);
+        private static readonly Mesh Button14Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button14MeshJson);
+        private static readonly Mesh Button15Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button15MeshJson);
+        private static readonly Mesh Button16Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button16MeshJson);
+        private static readonly Mesh Button17Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button17MeshJson);
+        private static readonly Mesh Button18Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button18MeshJson);
+        private static readonly Mesh Button19Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button19MeshJson);
+        private static readonly Mesh Button20Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button20MeshJson);
+        private static readonly Mesh Button21Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button21MeshJson);
+        private static readonly Mesh Button22Mesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.Button22MeshJson);
+        private static readonly Mesh HatMesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.HatMeshJson);
+        private static readonly List<Mesh> SnowmanBlackMeshes = new List<Mesh>()
+        {
+            Button1Mesh,
+            Button2Mesh,
+            Button3Mesh,
+            Button4Mesh,
+            Button5Mesh,
+            Button6Mesh,
+            Button7Mesh,
+            Button8Mesh,
+            Button9Mesh,
+            Button10Mesh,
+            Button11Mesh,
+            Button12Mesh,
+            Button13Mesh,
+            Button14Mesh,
+            Button15Mesh,
+            Button16Mesh,
+            Button17Mesh,
+            Button18Mesh,
+            Button19Mesh,
+            Button20Mesh,
+            Button21Mesh,
+            Button22Mesh,
+            HatMesh
+        };
+        #endregion BlackMeshes
 
         //Static
         public static List<Snowman> Snowmen = new List<Snowman>();
@@ -21,7 +82,7 @@ namespace Game
         public static int StartHealth = 300;
         public static int HeadshotMultiplier = 10;
         private static int Deaths = 0;
-        private static Random random = new Random();
+        private static readonly Random random = new Random();
         public static double SpawnRadius = 100.0;
 
         //Instance
@@ -139,7 +200,7 @@ namespace Game
                 {
                     Deaths++;
 
-                    if (StartSpeed < 15)
+                    if (StartSpeed < 10)
                     { 
                         StartSpeed += 1;
                     }
@@ -193,9 +254,19 @@ namespace Game
         private static void UpdateAllSnowmenMeshes()
         {
             SnowmenBodyMeshes.Clear();
+            SnowmenNoseMeshes.Clear();
+            SnowmenArmsMeshes.Clear();
+            SnowmenBlackMeshes.Clear();
             foreach (Snowman snowman in Snowmen)
             {
                 SnowmenBodyMeshes.Add(snowman.UpdateSnowmanMesh(SnowmanBodyMesh));
+                SnowmenNoseMeshes.Add(snowman.UpdateSnowmanMesh(SnowmanNoseMesh));
+                SnowmenArmsMeshes.Add(snowman.UpdateSnowmanMesh(SnowmanArm1Mesh));
+                SnowmenArmsMeshes.Add(snowman.UpdateSnowmanMesh(SnowmanArm2Mesh));
+                foreach (Mesh mesh in SnowmanBlackMeshes)
+                {
+                    SnowmenBlackMeshes.Add(snowman.UpdateSnowmanMesh(mesh));
+                }
             }
         }
 

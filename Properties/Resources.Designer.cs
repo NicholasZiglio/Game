@@ -61,12 +61,246 @@ namespace Game.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAGUaAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIALRoAAAAAAAA42gAAALAAAAAAAAAAAAAAANAc6OBCVOg/AAAAAAAAAAAAAAAAAPTvPwAAAAAAAAAAGC1EVPshGUAAAAAAAAAAABonF5K/FdA/AAAAAAAAAAAAAAAAAAAAAK3UdT5MYRw//GmuPwOnjz84Wc0/TQARQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmpmZmZmZmT8AAAAAAAAAAAAAAAAAAFlAAQAAAAIAAACpFaFd3uzrPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Arm1MeshJson {
+            get {
+                return ResourceManager.GetString("Arm1MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAHMaAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAOxoAAAAAAAA42gAAAK8AAAAAAAAAAAAAANAc6OBCVOg/AAAAAAAAAAAAAAAAAPTvPwAAAAAAAAAAGC1EVPshGUAAAAAAAAAAABonF5K/FdA/AAAAAAAAAAAAAAAAAAAAAK3UdT44Wc2//GmuPwOnjz9MYRy/TQARQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmpmZmZmZmT8AAAAAAAAAAAAAAAAAAFlAAQAAAAIAAACpFaFd3uzrPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Arm2MeshJson {
+            get {
+                return ResourceManager.GetString("Arm2MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAF8HAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAJwcAAAAAAAA4MgAAACQAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/SF9bHMUgyD8qX1scxSC4P3aVyz4KVpe+clApQIRm6T5lNHK+fictQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button10MeshJson {
+            get {
+                return ResourceManager.GetString("Button10MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAE0HAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAFQcAAAAAAAA4MgAAACQAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/RV9bHMUgyD84X1scxSC4P51+3z4zWHy+EesnQKtP/T6F4D++HcIrQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button11MeshJson {
+            get {
+                return ResourceManager.GetString("Button11MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAFIHAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAGgcAAAAAAAA4MgAAACQAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/SV9bHMUgyD8uX1scxSC4PzYq7z5llVK+kV4mQKN9Bj+4HRa+njUqQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button12MeshJson {
+            get {
+                return ResourceManager.GetString("Button12MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAFcHAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAHwcAAAAAAAA4MgAAACQAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/SF9bHMUgyD8qX1scxSC4P6dA/z7Vjhm+rKckQNuIDj9QLrq9uH4oQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button13MeshJson {
+            get {
+                return ResourceManager.GetString("Button13MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAFgHAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAIAcAAAAAAAA4MgAAACQAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/Rl9bHMUgyD87X1scxSC4Pyc3BT+208y9d/8iQK8fFD+6yCe9g9YmQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button14MeshJson {
+            get {
+                return ResourceManager.GetString("Button14MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAFgHAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAIAcAAAAAAAA4MgAAACQAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/Rl9bHMUgyD85X1scxSC4P7XLyz6oZHA+L0wpQMOc6T4rbpY+PCMtQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button15MeshJson {
+            get {
+                return ResourceManager.GetString("Button15MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAFcHAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAHwcAAAAAAAA4MgAAACQAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/Ol9bHMUgyD8kX1scxSC4P/UC4D4u3j4+iO4nQAPU/T7cVXs+lMUrQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button16MeshJson {
+            get {
+                return ResourceManager.GetString("Button16MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAFoHAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAIgcAAAAAAAA4MgAAACQAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/R19bHMUgyD8wX1scxSC4P+Ec7z6ZNxU+e1smQPh2Bj9Hr1E+hzIqQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button17MeshJson {
+            get {
+                return ResourceManager.GetString("Button17MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAGEHAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAKQcAAAAAAAA4MgAAACQAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/Rl9bHMUgyD8wX1scxSC4P3SG/z5rLLk9xqokQMKrDj/jDRk+04EoQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button18MeshJson {
+            get {
+                return ResourceManager.GetString("Button18MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAFgHAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAIAcAAAAAAAA4MgAAACQAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/R19bHMUgyD84X1scxSC4PwQdBT/pzCY9d/8iQI0FFD/OVcw9g9YmQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button19MeshJson {
+            get {
+                return ResourceManager.GetString("Button19MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAF4OAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAJg4AAAAAAAA4gAAAAGkAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/Zc/27E4b1D9gz/bsThvEP8q/+D5V9yU+83UdQCkVFT/nr4Q+W9wjQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button1MeshJson {
+            get {
+                return ResourceManager.GetString("Button1MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAFsSAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAIxIAAAAAAAA4vgAAAKIAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/Rl9bHMUg2D9EX1scxSDIPxLXUz9kiG690CezP+cacj9kiG49+4PCPwAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button20MeshJson {
+            get {
+                return ResourceManager.GetString("Button20MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAFQSAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAHBIAAAAAAAA4vgAAAKIAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/SF9bHMUg2D9KX1scxSDIPwEbbj9kiG69y9GEP2svhj9kiG499i2UPwAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button21MeshJson {
+            get {
+                return ResourceManager.GetString("Button21MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAHcSAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAPxIAAAAAAAA4vgAAAKIAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/Ol9bHMUg2D8+X1scxSDIP9bUZT9kiG699GErP1YMgj9kiG49RxpKPwAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button22MeshJson {
+            get {
+                return ResourceManager.GetString("Button22MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAF4OAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAJg4AAAAAAAA4gAAAAGkAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/Zc/27E4b1D9Yz/bsThvEPz4x+T7ThIS+kXkdQONNFT8toSW++d8jQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button2MeshJson {
+            get {
+                return ResourceManager.GetString("Button2MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAMQJAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAjAkAAAAAAAA4WwAAAEgAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/hT+SvdgV0D+MP5K92BXAP0cBAj8pC4e++9QOQCt8Fj/JKjy+tfMTQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button3MeshJson {
+            get {
+                return ResourceManager.GetString("Button3MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAMkJAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAkQkAAAAAAAA4WwAAAEgAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/hj+SvdgV0D+GP5K92BXAPwa4Aj8krle+pCwKQOoyFz+dwgW+X0sPQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button4MeshJson {
+            get {
+                return ResourceManager.GetString("Button4MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CANEJAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAmQkAAAAAAAA4WwAAAEgAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/hj+SvdgV0D+LP5K92BXAP5wsAz/jjgm+r98GQH+nFz9xjV69af4LQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button5MeshJson {
+            get {
+                return ResourceManager.GetString("Button5MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAN0JAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIApQkAAAAAAAA4WwAAAEgAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/hT+SvdgV0D+GP5K92BXAP4QEBD8L1yO99sQFQGh/GD8L1yM9sOMKQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button6MeshJson {
+            get {
+                return ResourceManager.GetString("Button6MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CANIJAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAmgkAAAAAAAA4WwAAAEgAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/hj+SvdgV0D+KP5K92BXAP+YMAz9TKV09YuIGQMqHFz/bNQk+HQEMQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button7MeshJson {
+            get {
+                return ResourceManager.GetString("Button7MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAMAJAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAiAkAAAAAAAA4WwAAAEgAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/hD+SvdgV0D+AP5K92BXAPyS9Aj/a9wQ+ai0KQAg4Fz9h41Y+JEwPQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button8MeshJson {
+            get {
+                return ResourceManager.GetString("Button8MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAMQJAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAjAkAAAAAAAA4WwAAAEgAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/hD+SvdgV0D+EP5K92BXAP93LAT/Qpzs+vtYOQMFGFj+syYY+ePUTQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6lD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Button9MeshJson {
+            get {
+                return ResourceManager.GetString("Button9MeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap GameIcon {
             get {
                 object obj = ResourceManager.GetObject("GameIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAJIOAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAWg4AAAAAAAA4iAAAAG4AAADSHTOevfjl/9IdM569+OX/0h0znr345f/SHTOevfjl/zEIrBxaZPO/GC1EVPshGUCk7DRrY+riv2ZmZmZmZuY/AAAAAAAAAAAAAAAAAAAAAJuZGb8cUxe/nmoyQJuZGT8cUxc/oGpiQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAmpmZmZmZyT8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string HatMeshJson {
+            get {
+                return ResourceManager.GetString("HatMeshJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAOAFAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAqAUAAAAAAAA4JAAAABYAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAGC1EVPshGUAAAAAAAAAAAAAAAAAAAOA/JjdyY/Yo3j+Y8Gfc0i3gPyEPDD9aE5i9pgkTQJIHhj+t1pc9t3IcQAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAexSuR+F6pD8AAAAAAAAAAAAAAAAAADRAAQAAAAIAAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string NoseMeshJson {
+            get {
+                return ResourceManager.GetString("NoseMeshJson", resourceCulture);
             }
         }
         

@@ -60,7 +60,10 @@ namespace Game
         {
             pManager.AddMeshParameter("Snowballs", "Snowballs", "Snowballs", GH_ParamAccess.list);
             pManager.AddMeshParameter("SnowmenBodies", "SnowmenBodies", "SnowmenBodies", GH_ParamAccess.list);
-            pManager.AddPointParameter("pt", "pt", "pt", GH_ParamAccess.item);
+            pManager.AddMeshParameter("SnowmenNoses", "SnowmenNoses", "SnowmenNoses", GH_ParamAccess.list);
+            pManager.AddMeshParameter("SnowmenArms", "SnowmenArms", "SnowmenArms", GH_ParamAccess.list);
+            pManager.AddMeshParameter("SnowmenHatButtons", "SnowmenHatButtons", "SnowmenHatButtons", GH_ParamAccess.list);
+
         }
 
         /// <summary>
@@ -75,7 +78,9 @@ namespace Game
 
             DA.SetDataList(0, Snowball.SnowballMeshes);
             DA.SetDataList(1, Snowman.SnowmenBodyMeshes);
-            DA.SetData(2, Snowman.Snowmen[0].headCollisionPoint);
+            DA.SetDataList(2, Snowman.SnowmenNoseMeshes);
+            DA.SetDataList(3, Snowman.SnowmenArmsMeshes);
+            DA.SetDataList(3, Snowman.SnowmenBlackMeshes);
 
         }
 
@@ -141,27 +146,22 @@ namespace Game
         }
 
 
-        //Component Extras
-        /// <summary>
-        /// Provides an Icon for every component that will be visible in the User Interface.
-        /// Icons need to be 24x24 pixels.
-        /// You can add image files to your project resources and access them like this:
-        /// return Resources.IconForThisComponent;
-        /// </summary>
+        //Icon
         protected override System.Drawing.Bitmap Icon => Properties.Resources.GameIcon;
 
-        /// <summary>
-        /// Each component must have a unique Guid to identify it. 
-        /// It is vital this Guid doesn't change otherwise old ghx files 
-        /// that use the old ID will partially fail during loading.
-        /// </summary>
+        //GUID
         public override Guid ComponentGuid => new Guid("99DB7909-BDD6-4C15-8095-D5494C278A4B");
 
 
+        //Render Meshes
         public override void DrawViewportMeshes(IGH_PreviewArgs args)
         {
             //Materials
             Rhino.Display.DisplayMaterial whiteMaterial = new Rhino.Display.DisplayMaterial(System.Drawing.Color.White);
+            Rhino.Display.DisplayMaterial orangeMaterial = new Rhino.Display.DisplayMaterial(System.Drawing.Color.Orange);
+            Rhino.Display.DisplayMaterial brownMaterial = new Rhino.Display.DisplayMaterial(System.Drawing.Color.Brown);
+            Rhino.Display.DisplayMaterial blackMaterial = new Rhino.Display.DisplayMaterial(System.Drawing.Color.Black);
+
 
             //Args
             base.DrawViewportMeshes(args);
@@ -169,6 +169,9 @@ namespace Game
             //Render Meshes
             RenderMeshList(args, Snowball.SnowballMeshes, whiteMaterial);
             RenderMeshList(args, Snowman.SnowmenBodyMeshes, whiteMaterial);
+            RenderMeshList(args, Snowman.SnowmenNoseMeshes, orangeMaterial);
+            RenderMeshList(args, Snowman.SnowmenArmsMeshes, brownMaterial);
+            RenderMeshList(args, Snowman.SnowmenBlackMeshes, blackMaterial);
         }
 
         //Render List of Meshes

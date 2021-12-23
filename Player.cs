@@ -12,8 +12,6 @@ namespace Game
         //Properties
         #region Properties
 
-        public static Player playerStatic;
-
         //Health
         public int Health { get; set; }
         public bool IsAlive { get; set; }
@@ -26,7 +24,6 @@ namespace Game
 
         public Point3d Location { get; set; }
         private Point3d _Location;
-        private Point3d _CameraLocation;
 
         //Movement
         private bool IsAirbourne { get; set; }
@@ -53,7 +50,7 @@ namespace Game
         private Vector3d _LookDirection;
         public double LookSpeed { get; set; }
         public double LookStopAngleZ { get; set; }
-        
+
         #endregion Properties
 
 
@@ -70,7 +67,6 @@ namespace Game
             CrouchingHeight = height / 2.0;
             Height = height;
             _Location = new Point3d(0.0, 0.0, 0.0);
-            _CameraLocation = new Point3d(0.0, 0.0, Height);
 
             //Movement
             CrouchingSpeed = 5;
@@ -84,14 +80,14 @@ namespace Game
             IsAirbourne = false;
             _JumpAcceleration = new Vector3d(0.0, 0.0, 3.5);
             _Forces = new Vector3d(0.0, 0.0, 0.0);
-           
+
             //Orientation
             _LookDirection = new Vector3d(0.0, 1.0, 0.0);
             LookSpeed = Math.PI;
             LookStopAngleZ = Math.PI / 180.0;
-            playerStatic = this;
+
         }
-        
+
         public void TakeDamage(int damage)
         {
             Health -= damage;
@@ -132,7 +128,7 @@ namespace Game
             GetMovementDirection(gameController, deltaTime);
 
             SetLocationXY();
-            
+
 
             Location = new Point3d(_Location);
 
@@ -184,7 +180,7 @@ namespace Game
                 {
                     ActiveSpeed = DefaultSpeed;
                 }
-                if(!gameController.ButtonB.IsPressed)
+                if (!gameController.ButtonB.IsPressed)
                 {
                     IsCrouching = false;
                     Height = FullHeight;
@@ -196,7 +192,7 @@ namespace Game
         private void GetMovementDirection(GameController gameController, double deltaTime)
         {
             if (!IsAirbourne)
-            { 
+            {
                 //Forward vector
                 _MovementForward = new Vector3d(_LookDirection.X, _LookDirection.Y, 0.0);
 
@@ -220,7 +216,7 @@ namespace Game
             //Move forward
             _Location += _MovementForward;
             _Location += _MovementSide;
-            
+
         }
 
         #endregion Movement

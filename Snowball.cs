@@ -16,7 +16,7 @@ namespace Game
         //Static
         public static List<Snowball> Snowballs = new List<Snowball>();
         public static List<Mesh> SnowballMeshes = new List<Mesh>();
-        private static Mesh SnowballMesh = (Mesh) Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.SnowballMeshJson);
+        private static readonly Mesh SnowballMesh = (Mesh) Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.SnowballMeshJson);
 
         public static int startDamage = 100;
 
@@ -50,6 +50,22 @@ namespace Game
             RenderSnowballs();
         }
 
+        //Update All Snowballs
+        public static void UpdateSnowballs(double deltaTime, Vector3d gravity)
+        {
+            foreach (Snowball snowball in Snowball.Snowballs)
+            {
+                if (snowball.IsAlive)
+                {
+                    snowball.UpdateSnowball(deltaTime, gravity);
+                }
+                else
+                {
+                    Snowball.Snowballs.Remove(snowball);
+                }
+            }
+        }
+
         //Update Snowball Instance
         public void UpdateSnowball(double deltaTime, Vector3d gravity)
         {
@@ -61,19 +77,6 @@ namespace Game
 
                 Location = new Point3d(_Location);
             } 
-        }
-
-        //Update All Snowballs
-        public static void UpdateSnowballs(double deltaTime, Vector3d gravity)
-        {
-            foreach (Snowball snowball in Snowballs)
-            {
-                snowball.UpdateSnowball(deltaTime, gravity);
-                if (!snowball.IsAlive)
-                {
-                    Snowballs.Remove(snowball);
-                }
-            }
         }
 
         //Render Snowballs
