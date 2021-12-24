@@ -12,6 +12,8 @@ namespace Game
         //Properties
         #region Properties
 
+        public static int Score;
+
         //Health
         public int Health { get; set; }
         public bool IsAlive { get; set; }
@@ -58,6 +60,8 @@ namespace Game
         //Constructor
         public Player(double height)
         {
+            Score = 0;
+
             //Health
             Health = 100;
             IsAlive = true;
@@ -67,6 +71,7 @@ namespace Game
             CrouchingHeight = height / 2.0;
             Height = height;
             _Location = new Point3d(0.0, 0.0, 0.0);
+            Location = new Point3d(0.0, 0.0, 0.0);
 
             //Movement
             CrouchingSpeed = 5;
@@ -102,20 +107,20 @@ namespace Game
             UpdateMovement(gameController, deltaTime, gravity);
             CheckCollisions();
             UpdateDirection(gameController, deltaTime);
-            ThrowSnowballs(gameController, deltaTime, gravity);
+            ThrowSnowballs(gameController);
             
 
         }
 
-        private void ThrowSnowballs(GameController gameController, double deltaTime, Vector3d gravity)
+        private void ThrowSnowballs(GameController gameController)
         {
             if (gameController.LeftShoulder.JustPressed)
             {
-                Snowball.Snowballs.Add(new Snowball(GetNewSnowballPosition(true), _LookDirection * 30.0));
+                Snowball.Snowballs.Add(new Snowball(GetNewSnowballPosition(true), _LookDirection * 25.0));
             }
             if (gameController.RightShoulder.JustPressed)
             {
-                Snowball.Snowballs.Add(new Snowball(GetNewSnowballPosition(false), _LookDirection * 30.0));
+                Snowball.Snowballs.Add(new Snowball(GetNewSnowballPosition(false), _LookDirection * 25.0));
             }
         }
 

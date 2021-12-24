@@ -159,9 +159,9 @@ namespace Game
         {
             UpdateCollisionPoints();
 
-            CheckPointPointCollision(snowball, bodyCollisionPoint, _BodyCollisionOffset.Z, snowballdamage);
+            CheckPointPointCollision(snowball, bodyCollisionPoint, _BodyCollisionOffset.Z + (snowball.Radius / 2), snowballdamage);
             int headshotDamage = snowballdamage * HeadshotMultiplier;
-            CheckPointPointCollision(snowball, headCollisionPoint, _HeadCollisionOffset.Z, headshotDamage);
+            CheckPointPointCollision(snowball, headCollisionPoint, _HeadCollisionOffset.Z + (snowball.Radius / 2), headshotDamage);
 
             if (health < 0)
             {

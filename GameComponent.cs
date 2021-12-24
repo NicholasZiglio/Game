@@ -18,7 +18,7 @@ namespace Game
         //Grasshopper
         GH_Document GrasshopperDocument;
         GH_Component GrasshopperComponent;
-        readonly int scheduleSolutionMilliseconds = 5;
+        readonly int scheduleSolutionMilliseconds = 2;
 
         //Rhino
 
@@ -30,7 +30,7 @@ namespace Game
         double deltaTime;
         Vector3d gravity = new Vector3d(0.0, 0.0, -9.81);
 
-        Mesh groundMesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.GroundMeshJson);
+        readonly Mesh groundMesh = (Mesh)Rhino.Runtime.CommonObject.FromJSON(Properties.Resources.GroundMeshJson);
 
         #endregion Persistent Variables
 
@@ -65,6 +65,7 @@ namespace Game
             pManager.AddMeshParameter("SnowmenNoses", "SnowmenNoses", "SnowmenNoses", GH_ParamAccess.list);
             pManager.AddMeshParameter("SnowmenArms", "SnowmenArms", "SnowmenArms", GH_ParamAccess.list);
             pManager.AddMeshParameter("SnowmenHatButtons", "SnowmenHatButtons", "SnowmenHatButtons", GH_ParamAccess.list);
+            pManager.AddCurveParameter("Snowflakes", "Snowflakes", "Snowflakes", GH_ParamAccess.list);
             pManager.AddMeshParameter("Ground", "Ground", "Ground", GH_ParamAccess.item);
         }
 
@@ -83,7 +84,9 @@ namespace Game
             DA.SetDataList(2, Snowman.SnowmenNoseMeshes);
             DA.SetDataList(3, Snowman.SnowmenArmsMeshes);
             DA.SetDataList(4, Snowman.SnowmenBlackMeshes);
-            DA.SetData(5, groundMesh);
+            DA.SetDataList(5, Snowflake.SnowflakePolylines);
+            DA.SetData(6, groundMesh);
+            
         }
 
         //Initialize Grasshopper component & Rhino document
@@ -128,6 +131,7 @@ namespace Game
             Snowman.Snowmen.Add(new Snowman(player.Location));
             Snowman.StartHealth = 300;
             Snowman.StartSpeed = 5;
+            Snowflake.GenerateSnowflakes(75, player.Location);
         }
 
         //Update
@@ -138,6 +142,7 @@ namespace Game
 
             //Updates
             GetDeltaTime();
+            Snowflake.UpdateSnowflakes(player.Location, deltaTime, gravity);
             gameController.UpdateState();
             player.Update(gameController, deltaTime, gravity);
             if (!player.IsAlive)
@@ -198,6 +203,26 @@ namespace Game
             foreach (Mesh mesh in meshList)
             {
                 args.Display.DrawMeshShaded(mesh, material);
+            }
+        }
+
+        //Render Curves
+        public override void DrawViewportWires(IGH_PreviewArgs args)
+        {
+            base.DrawViewportWires(args);
+            RenderPolylineList(args, Snowflake.SnowflakePolylines, System.Drawing.Color.White);
+            TextEntity score = new TextEntity();
+            score.PlainText = "Score: " + player.Score.ToString();
+            args.Display.DrawText(score, System.Drawing.Color.Red);
+        }
+
+        //Render List of Curves
+        public void RenderPolylineList(IGH_PreviewArgs args, List<Polyline> polylineList, System.Drawing.Color color)
+        {
+            foreach (Polyline polyline in polylineList)
+            {
+                args.Display.DrawPolyline(polyline, color);
+                
             }
         }
     }

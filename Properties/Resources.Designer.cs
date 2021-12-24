@@ -323,6 +323,15 @@ namespace Game.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAOkKAAAAAAAA+/8CABQAAAAAAAAA5tTXTkfp0xG/5QAQgwEi8E6cu9v8/wIAsQoAAAAAAAAQVQAAALgehetRuJ4/kML1KFyP2r8AAAAAAAAAAKRwPQrXo8A/H4XrUbge3b8AAAAAAAAAADMzMzMzM8M/7FG4HoXr2b8AAAAAAAAAALgehetRuJ4/uB6F61G41r8AAAAAAAAAALgehetRuJ4/9ihcj8L1yL8AAAAAAAAAAAAAAAAAAMA/UrgehetR0L8AAAAAAAAAANejcD0K18M/Fa5H4XoUzr8AAAAAAAAAADMzMzMzM8M/uB6F61G4vr8AAAAAAAAAAI/C9Shcj9I/mpmZmZmZyb8AAAAAAAAAAJqZmZmZmdE/cT0K16Nw1b8AAAAAAAAAAB+F61G4HtU/w/UoXI/C1b8AAAAAAAAAABWuR+F6FNY/cT0 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SnowflakePolylineCurveJson {
+            get {
+                return ResourceManager.GetString("SnowflakePolylineCurveJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {&quot;version&quot;:10000,&quot;archive3dm&quot;:70,&quot;opennurbs&quot;:-1909162531,&quot;data&quot;:&quot;+n8CAFNaAAAAAAAA+/8CABQAAAAAAAAA5NTXTkfp0xG/5QAQgwEi8C25G1z8/wIAG1oAAAAAAAA4mgMAAF4DAAAAAAAAAAAAAEz6HvidVeU/AAAAAAAAAAAAAAAAAPTvPwAAAAAAAAAAGC1EVPshGUAYLURU+yH5vxgtRFT7Ifk/AAAAAAAAAAAAAAAAAAAAAObof7/m6H+/AAAAAObofz/m6H8/zsw8QAAAgD8AAIA/AACAPwAAgL8AAIC/AACAvwAAgD8AAIA/AACAvwAAgL//////AQCAAECVAAAAAAAAABUAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADRAEAAAAB4AAACHROdKGFfWPwAAAAAAAPA/h0TnShhX1j+HROdKGFe2PwAAAAACAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SnowmanBodyMeshJson {
