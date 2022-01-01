@@ -20,9 +20,6 @@ namespace Game
         GH_Component GrasshopperComponent;
         readonly int scheduleSolutionMilliseconds = 2;
 
-        //Rhino
-
-
         //Game
         bool isGameInitialized = false;
         DateTime startTime = DateTime.Now;
